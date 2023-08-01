@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { COLORS, FONTS } from '../../constants/Theme';
+import { COLORS, FONTS } from '../../../constants/Theme';
 
 export default function TransactionCardItem({ transaction }) {
     return (
