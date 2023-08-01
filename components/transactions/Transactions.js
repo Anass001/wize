@@ -3,7 +3,7 @@ import styles from './Transactions.style';
 import Up from '../../assets/images/up.svg';
 import Down from '../../assets/images/down.svg';
 import React from 'react'
-import TransactionCard from '../cards/TransactionCard';
+import TransactionCard from '../../globals/cards/transactionCard/TransactionCard';
 import Icon from 'react-native-vector-icons/Octicons';
 import { useState } from 'react';
 

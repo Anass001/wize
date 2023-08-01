@@ -1,18 +1,23 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './AddTransaction.style';
 import Up from '../../assets/images/up.svg';
 import Down from '../../assets/images/down.svg';
 import UpWhite from '../../assets/images/up_white.svg';
 import DownWhite from '../../assets/images/down_white.svg';
-import { Picker } from '@react-native-picker/picker';
+import DatePicker from 'react-native-date-picker'
+import { useState } from 'react';
+
 
 export default function AddTransaction() {
 
-    const [type, setType] = React.useState('');
-    const [category, setCategory] = React.useState('')
-    const [isAmountInputFocused, setIsAmountInputFocused] = React.useState(false);
+    const [type, setType] = useState('');
+    const [category, setCategory] = useState('')
+    const [isAmountInputFocused, setIsAmountInputFocused] = useState(false);
+
+    const [date, setDate] = useState(new Date())
+    const [open, setOpen] = useState(false)
 
     return (
         <View style={styles.container}>
@@ -41,19 +46,19 @@ export default function AddTransaction() {
                     onBlur={() => setIsAmountInputFocused(false)}
                 />
             </View>
-            <Picker
-                selectedValue={category}
-                onValueChange={(itemValue, itemIndex) =>
-                    setCategory(itemValue)
-                }>
-                <Picker.Item label="Java" value="java" />
-                <Picker.Item label="JavaScript" value="js" />
-                <Picker.Item label="JavaScript" value="jx" />
-                <Picker.Item label="JavaScript" value="jr" />
-                <Picker.Item label="JavaScript" value="jl" />
-
-
-            </Picker>
+            <Button title="Open" onPress={() => setOpen(true)} />
+            <DatePicker
+                modal
+                open={open}
+                date={date}
+                onConfirm={(date) => {
+                    setOpen(false)
+                    setDate(date)
+                }}
+                onCancel={() => {
+                    setOpen(false)
+                }}
+            />
         </View>
     );
 }
