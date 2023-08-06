@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     categoryName: {
         fontFamily: FONTS.regular,
         fontSize: 16,
+    },
+    categoryNameWrapper: {
+        flex: 1,
         padding: 24,
     },
     deleteIconWrapper: {
