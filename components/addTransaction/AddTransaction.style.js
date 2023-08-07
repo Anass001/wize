@@ -43,12 +43,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 8,
     },
-    incomeSelectionTextSelected: {
-        color: 'white',
-        fontFamily: FONTS.regular,
-        fontSize: 16,
-        marginLeft: 8,
-    },
     expenseSelection: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -78,31 +72,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 8,
     },
-    expenseSelectionTextSelected: {
-        color: 'white',
-        fontFamily: FONTS.regular,
-        fontSize: 16,
-        marginLeft: 8,
-    },
-    transactionAmountContainerBlurred: {
+    transactionAmountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 16,
         borderWidth: 1,
         borderRadius: 4,
-        borderColor: COLORS.greyStroke,
-    },
-    transactionAmountContainerFocused: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 16,
-        borderWidth: 1,
-        borderRadius: 4,
-        borderColor: COLORS.primary,
     },
     amountInput: {
         flex: 1,
-        // color: COLORS.secondaryText,
         padding: 16,
     },
     currencyText: {
