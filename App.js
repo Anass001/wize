@@ -13,8 +13,11 @@ import { getHeaderTitle } from '@react-navigation/elements';
 
 import Transactions from './components/transactions/Transactions';
 import AddTransaction from './components/addTransaction/AddTransaction';
+
 import Categories from './components/categories/Categories';
 import AddCategory from './components/addCategory/AddCategory';
+
+import Budgets from './components/budgets/Budgets';
 
 import { COLORS, FONTS } from './constants/Theme';
 
@@ -60,6 +63,7 @@ function App({ navigation }) {
         {
           title: 'Transactions',
           headerShadowVisible: false,
+          // headerShown: false,
         }
       } />
       <Stack.Screen name="AddTransaction" component={AddTransaction} options={
@@ -85,25 +89,7 @@ function App({ navigation }) {
           title: 'Add Category',
           headerShadowVisible: false,
           presentation: 'modal',
-          headerRight: () => (
-            <View style={{
-              flexDirection: 'row',
-            }}>
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Save"
-              />
-              <View style={{
-                width: 8,
-              }} />
-            </View>
-          ),
           headerBackTitle: 'Cancel',
-          headerBackImage: () => (
-            <View style={{
-              width: 16,
-            }} />
-          ),
         }
       } />
     </Stack.Navigator>
@@ -118,7 +104,7 @@ function App({ navigation }) {
             <Icon name="arrow-switch" color={color} size={size} />
           ),
         }} />
-        <Tab.Screen name="Budgets" component={HomeScreen} options={{
+        <Tab.Screen name="Budgets" component={Budgets} options={{
           tabBarLabel: 'Budgets',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcon name="piggy-bank-outline" color={color} size={size} />
