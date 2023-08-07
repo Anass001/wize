@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../../constants/Theme';
+import { COLORS, FONTS } from '../../constants/Theme';
 
 const styles = StyleSheet.create({
     container: {
@@ -11,19 +11,82 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 16,
     },
-    newCategoryNameInputFocused: {
+    newCategoryNameInputWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
         borderWidth: 1,
         borderRadius: 4,
-        borderColor: COLORS.primary,
     },
-    newCategoryNameInputBlurred: {
+    transactionTypeContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+    },
+    incomeSelection: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        borderRadius: 4,
+        marginEnd: 4,
+        borderWidth: 1,
+        borderColor: COLORS.green,
+        flex: 1,
+    },
+    incomeSelectionSelected: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 13,
+        paddingHorizontal: 17,
+        borderRadius: 4,
+        marginEnd: 4,
+        backgroundColor: COLORS.green,
+        flex: 1,
+    },
+    incomeSelectionText: {
+        color: COLORS.green,
+        fontFamily: FONTS.regular,
+        fontSize: 16,
+        marginLeft: 8,
+    },
+    expenseSelection: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        marginStart: 4,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: COLORS.red,
+        flex: 1,
+    },
+    expenseSelectionSelected: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 13,
+        paddingHorizontal: 17,
+        marginStart: 4,
+        borderRadius: 4,
+        backgroundColor: COLORS.red,
+        flex: 1,
+    },
+    expenseSelectionText: {
+        color: COLORS.red,
+        fontFamily: FONTS.regular,
+        fontSize: 16,
+        marginLeft: 8,
+    },
+    transactionAmountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginVertical: 16,
         borderWidth: 1,
         borderRadius: 4,
-        borderColor: COLORS.greyStroke,
     },
 });
 
