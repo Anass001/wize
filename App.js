@@ -8,8 +8,6 @@ import { useFonts } from "expo-font";
 import Icon from 'react-native-vector-icons/Octicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
-import { CardStyleInterpolators } from '@react-navigation/stack';
-import { getHeaderTitle } from '@react-navigation/elements';
 
 import Transactions from './components/transactions/Transactions';
 import AddTransaction from './components/addTransaction/AddTransaction';
@@ -18,29 +16,10 @@ import Categories from './components/categories/Categories';
 import AddCategory from './components/addCategory/AddCategory';
 
 import Budgets from './components/budgets/Budgets';
+import AddBudget from './components/addBudget/AddBudget';
 
-import { COLORS, FONTS } from './constants/Theme';
+import Insights from './components/insights/Insights';
 
-function HomeScreen({ navigation }) {
-
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-}
-
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
 
 function App({ navigation }) {
 
@@ -63,7 +42,6 @@ function App({ navigation }) {
         {
           title: 'Transactions',
           headerShadowVisible: false,
-          // headerShown: false,
         }
       } />
       <Stack.Screen name="AddTransaction" component={AddTransaction} options={
@@ -95,6 +73,25 @@ function App({ navigation }) {
     </Stack.Navigator>
   );
 
+  const BudgetsStack = () => (
+    <Stack.Navigator>
+      <Stack.Screen name="BudgetsOverview" component={Budgets} options={
+        {
+          title: 'Budgets',
+          headerShadowVisible: false,
+        }
+      } />
+      <Stack.Screen name="AddBudget" component={AddBudget} options={
+        {
+          title: 'Add Budget',
+          headerShadowVisible: false,
+          presentation: 'modal',
+          headerBackTitle: 'Cancel'
+        }
+      } />
+    </Stack.Navigator>
+  );
+
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -104,13 +101,14 @@ function App({ navigation }) {
             <Icon name="arrow-switch" color={color} size={size} />
           ),
         }} />
-        <Tab.Screen name="Budgets" component={Budgets} options={{
+        <Tab.Screen name="Budgets" component={BudgetsStack} options={{
+          headerShown: false,
           tabBarLabel: 'Budgets',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcon name="piggy-bank-outline" color={color} size={size} />
           ),
         }} />
-        <Tab.Screen name="Insights" component={DetailsScreen} options={{
+        <Tab.Screen name="Insights" component={Insights} options={{
           tabBarLabel: 'Insights',
           tabBarIcon: ({ color, size }) => (
             <Icon name="light-bulb" color={color} size={size} />
