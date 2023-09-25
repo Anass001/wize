@@ -6,7 +6,7 @@ import './../../assets/fonts/source-sans-pro.regular.ttf';
 import { useEffect } from 'react';
 
 import openDatabase from '../../data/DbService';
-import { init, addCategory, getCategories } from '../../data/dao/CategoryDao';
+import { init, addCategory } from '../../data/dao/CategoryDao';
 
 import { COLORS } from '../../constants/Theme';
 
@@ -14,7 +14,6 @@ import Up from '../../assets/images/up.svg';
 import Down from '../../assets/images/down.svg';
 import UpWhite from '../../assets/images/up_white.svg';
 import DownWhite from '../../assets/images/down_white.svg';
-import { useFocusEffect } from '@react-navigation/native';
 
 const db = openDatabase();
 

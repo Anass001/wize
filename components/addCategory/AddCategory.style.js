@@ -81,13 +81,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 8,
     },
-    transactionAmountContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 16,
-        borderWidth: 1,
-        borderRadius: 4,
-    },
 });
 
 export default styles;
