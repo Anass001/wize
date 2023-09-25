@@ -7,8 +7,8 @@ import { COLORS } from '../../constants/Theme';
 import { useLayoutEffect, useEffect } from 'react';
 import { Button } from 'react-native';
 import openDatabase from '../../data/DbService';
-import { init, addBudget, getBudgets } from '../../data/dao/BudgetDao';
-import { init as initCategoriesDb, getCategories } from '../../data/dao/CategoryDao';
+import { init, addBudget } from '../../data/dao/BudgetDao';
+import { init as initCategoriesDb, getAvailableExpenseCategories } from '../../data/dao/CategoryDao';
 import FloatingPicker from '../../globals/pickers/FloatingPicker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useFocusEffect } from '@react-navigation/native';
@@ -37,9 +37,13 @@ export default function AddBudget({ navigation }) {
     const [isNumberInputFocused, setIsNumberInputFocused] = useState(false);
     const [showCategoryPicker, setShowCategoryPicker] = useState(false);
 
-    const [newBudget, setNewBudget] = useState({ amount: '', categoryid: "" });
+    const [newBudget, setNewBudget] = useState({
+        amount: '', category: {
+            id: "",
+            name: "Select a category",
+        }
+    });
     const [categories, setCategories] = useState([]);
-    const [category, setCategory] = useState({ id: "", name: "Select a category" });
 
     useEffect(
         () => {
@@ -57,12 +61,8 @@ export default function AddBudget({ navigation }) {
                     <Button
                         onPress={
                             () => {
-                                setNewBudget({
-                                    ...newBudget,
-                                    categoryid: category.id,
-                                });
-                                if (newBudget.amount !== 0 && newBudget.categoryid.toString() !== "") {
-                                    console.log(newBudget);
+                                console.log(newBudget);
+                                if (newBudget.amount !== 0 && newBudget.category.id.toString() !== "") {
                                     addBudget(db, newBudget)
                                     navigation.goBack();
                                 }
@@ -76,11 +76,11 @@ export default function AddBudget({ navigation }) {
                 </View>
             ),
         });
-    }, [navigation, newBudget, category]);
+    }, [navigation, newBudget]);
 
     useFocusEffect(
         React.useCallback(() => {
-            getCategories(db).then((categories) => {
+            getAvailableExpenseCategories(db).then((categories) => {
                 setCategories(categories);
             });
         }, [])
@@ -115,7 +115,7 @@ export default function AddBudget({ navigation }) {
             <TouchableOpacity style={styles.categoryContainer} onPress={() => {
                 setShowCategoryPicker(true)
             }}>
-                <Text style={styles.categoryText}>{category.name}</Text>
+                <Text style={styles.categoryText}>{newBudget.category.name}</Text>
                 <Icon name="angle-down" size={24} style={
                     [
                         { color: COLORS.secondaryText, },
@@ -126,8 +126,13 @@ export default function AddBudget({ navigation }) {
                 showCategoryPicker &&
                 <FloatingPicker
                     data={categories}
-                    selectedItem={category}
-                    setSelectedItem={setCategory}
+                    selectedItem={newBudget.category}
+                    setSelectedItem={(item) => {
+                        setNewBudget({
+                            ...newBudget,
+                            category: item,
+                        });
+                    }}
                     setShow={setShowCategoryPicker}
                 />
             }
