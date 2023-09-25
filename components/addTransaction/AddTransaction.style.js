@@ -7,12 +7,13 @@ const styles = StyleSheet.create({
         padding: 16,
         paddingTop: 32,
         backgroundColor: 'white',
+        height: '100%',
     },
     transactionTypeContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 16,
+        marginBottom: 8,
     },
     incomeSelection: {
         flexDirection: 'row',
@@ -75,9 +76,9 @@ const styles = StyleSheet.create({
     transactionAmountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 16,
         borderWidth: 1,
         borderRadius: 4,
+        marginVertical: 8,
     },
     amountInput: {
         flex: 1,
@@ -85,6 +86,59 @@ const styles = StyleSheet.create({
     },
     currencyText: {
         color: COLORS.secondaryText,
+        paddingStart: 16,
+    },
+    datePickerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        paddingVertical: 10,
+        marginVertical: 8,
+        borderRadius: 4,
+        borderColor: COLORS.greyStroke,
+    },
+    datePickerText: {
+        color: COLORS.secondaryText,
+        paddingStart: 16,
+    },
+    datePicker: {
+        flex: 1,
+        padding: 8,
+    },
+    categoryContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        paddingVertical: 12,
+        marginVertical: 8,
+        paddingHorizontal: 16,
+        borderRadius: 4,
+        borderColor: COLORS.greyStroke,
+    },
+    descriptionContainer: {
+        borderWidth: 1,
+        borderRadius: 4,
+        marginVertical: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    descriptionInput: {
+        flex: 1,
+        padding: 16,
+    },
+    frequencyContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        borderRadius: 4,
+        marginVertical: 8,
+        borderColor: COLORS.greyStroke,
+    },
+    frequencyText: {
         paddingStart: 16,
     },
 })
