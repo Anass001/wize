@@ -5,18 +5,15 @@
 import React, { Component } from 'react';
 import {
     View,
-    Picker,
     Text,
     TouchableOpacity,
     StyleSheet,
-    Dimensions,
-    Modal
 } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
-const ScreenWidth = Dimensions.get('window').width;
-const ScreenHeight = Dimensions.get('window').height;
 
 export default class YearMonthPicker extends Component {
+    
     constructor(props) {
         super(props);
         let { startYear, endYear, selectedYear, selectedMonth, visiable } = props;
@@ -33,7 +30,7 @@ export default class YearMonthPicker extends Component {
         }
     }
 
-    show = async ({startYear, endYear, selectedYear, selectedMonth}) => {
+    show = async ({ startYear, endYear, selectedYear, selectedMonth }) => {
         let years = this.getYears(startYear, endYear);
         let months = this.getMonths();
         selectedYear = selectedYear || years[0];
@@ -77,7 +74,9 @@ export default class YearMonthPicker extends Component {
     getMonths = () => {
         let months = []
         for (let i = 1; i <= 12; i++) {
-            months.push(i);
+            const date = new Date(2020, i, 0);
+            const monthName = date.toLocaleString('default', { month: 'short' });
+            months.push(monthName)
         }
         return months;
     }
@@ -106,18 +105,18 @@ export default class YearMonthPicker extends Component {
         return (
             <TouchableOpacity
                 style={styles.modal}
-                onPress={this.onCancelPress}
+                activeOpacity={1}
             >
                 <View
                     style={styles.outerContainer}
                 >
                     <View style={styles.toolBar}>
                         <TouchableOpacity style={styles.toolBarButton} onPress={this.onCancelPress}>
-                            <Text style={styles.toolBarButtonText}>取消</Text>
+                            <Text style={styles.toolBarButtonText}>Cancel</Text>
                         </TouchableOpacity>
                         <View style={{ flex: 1 }} />
                         <TouchableOpacity style={styles.toolBarButton} onPress={this.onConfirmPress}>
-                            <Text style={styles.toolBarButtonText}>确定</Text>
+                            <Text style={styles.toolBarButtonText}>Set</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.innerContainer}>

@@ -1,35 +1,27 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
+import { PortalProvider } from '@gorhom/portal';
+
+import Transactions from './screens/transactions/Transactions';
+import AddTransactionModal from './screens/addTransaction/AddTransactionModal';
+
+import Categories from './screens/categories/Categories';
+import AddCategory from './screens/categories/AddCategory';
+
+import Budgets from './screens/budgets/Budgets';
+import AddBudget from './screens/budgets/AddBudget';
+
+import Insights from './screens/insights/Insights';
+
 import { useFonts } from "expo-font";
 import Icon from 'react-native-vector-icons/Octicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import Transactions from './components/transactions/Transactions';
-import AddTransactionModal from './components/addTransaction/AddTransactionModal';
-
-import Categories from './components/categories/Categories';
-import AddCategory from './components/addCategory/AddCategory';
-
-import Budgets from './components/budgets/Budgets';
-import AddBudget from './components/addBudget/AddBudget';
-
-import Insights from './components/insights/Insights';
-
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
-import { PortalProvider, Portal } from '@gorhom/portal';
-
-
-
-function App({ navigation }) {
+function App() {
 
   const [fontsLoaded] = useFonts({
     SourceSansProRegular: require("./assets/fonts/source-sans-pro.regular.ttf"),
