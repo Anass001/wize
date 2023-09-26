@@ -3,11 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import {BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
+import { BottomSheetModalProvider, } from '@gorhom/bottom-sheet';
 import { PortalProvider } from '@gorhom/portal';
 
 import Transactions from './screens/transactions/Transactions';
-import AddTransactionModal from './screens/addTransaction/AddTransactionModal';
+import AddTransaction from './screens/transactions/AddTransaction';
 
 import Categories from './screens/categories/Categories';
 import AddCategory from './screens/categories/AddCategory';
@@ -44,7 +44,7 @@ function App() {
           headerShadowVisible: false,
         }
       } />
-      <Stack.Screen name="AddTransaction" component={AddTransactionModal} options={
+      <Stack.Screen name="AddTransaction" component={AddTransaction} options={
         {
           title: 'Add Transaction',
           headerShadowVisible: false,
