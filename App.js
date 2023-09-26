@@ -10,7 +10,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Transactions from './components/transactions/Transactions';
-import AddTransaction from './components/addTransaction/AddTransaction';
+import AddTransactionModal from './components/addTransaction/AddTransactionModal';
 
 import Categories from './components/categories/Categories';
 import AddCategory from './components/addCategory/AddCategory';
@@ -19,6 +19,14 @@ import Budgets from './components/budgets/Budgets';
 import AddBudget from './components/addBudget/AddBudget';
 
 import Insights from './components/insights/Insights';
+
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
+import { PortalProvider, Portal } from '@gorhom/portal';
+
 
 
 function App({ navigation }) {
@@ -44,7 +52,7 @@ function App({ navigation }) {
           headerShadowVisible: false,
         }
       } />
-      <Stack.Screen name="AddTransaction" component={AddTransaction} options={
+      <Stack.Screen name="AddTransaction" component={AddTransactionModal} options={
         {
           title: 'Add Transaction',
           headerShadowVisible: false,
@@ -93,35 +101,42 @@ function App({ navigation }) {
   );
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Transactions" component={TransactionsStack} options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="arrow-switch" color={color} size={size} />
-          ),
-        }} />
-        <Tab.Screen name="Budgets" component={BudgetsStack} options={{
-          headerShown: false,
-          tabBarLabel: 'Budgets',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcon name="piggy-bank-outline" color={color} size={size} />
-          ),
-        }} />
-        <Tab.Screen name="Insights" component={Insights} options={{
-          tabBarLabel: 'Insights',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="light-bulb" color={color} size={size} />
-          ),
-        }} />
-        <Tab.Screen name="Categories" component={CategoriesStack} options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="stack" color={color} size={size} />
-          ),
-        }} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <BottomSheetModalProvider>
+          <PortalProvider>
+
+            <Tab.Navigator>
+              <Tab.Screen name="Transactions" component={TransactionsStack} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                  <Icon name="arrow-switch" color={color} size={size} />
+                ),
+              }} />
+              <Tab.Screen name="Budgets" component={BudgetsStack} options={{
+                headerShown: false,
+                tabBarLabel: 'Budgets',
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialIcon name="piggy-bank-outline" color={color} size={size} />
+                ),
+              }} />
+              <Tab.Screen name="Insights" component={Insights} options={{
+                tabBarLabel: 'Insights',
+                tabBarIcon: ({ color, size }) => (
+                  <Icon name="light-bulb" color={color} size={size} />
+                ),
+              }} />
+              <Tab.Screen name="Categories" component={CategoriesStack} options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size }) => (
+                  <Icon name="stack" color={color} size={size} />
+                ),
+              }} />
+            </Tab.Navigator>
+          </PortalProvider>
+        </BottomSheetModalProvider>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 
