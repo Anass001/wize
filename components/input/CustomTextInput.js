@@ -4,7 +4,7 @@ import { TextInput } from 'react-native';
 import { StyleSheet } from 'react-native';
 import InputContainer from './InputContainer.js';
 
-export default function CustomTextInput({ placeholder, value, onChangeText, label }) {
+export default function CustomTextInput({ placeholder, value, onChangeText, label, keyboardType }) {
 
     const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -13,7 +13,7 @@ export default function CustomTextInput({ placeholder, value, onChangeText, labe
             <TextInput
                 style={styles.textInput}
                 placeholder={placeholder}
-                keyboardType='default'
+                keyboardType={keyboardType}
                 returnKeyType="done"
                 value={value}
                 onChangeText={onChangeText}
